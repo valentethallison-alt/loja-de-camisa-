@@ -1,2 +1,2 @@
-# loja-de-camisa-
+# valent store
 Loja de camisa
