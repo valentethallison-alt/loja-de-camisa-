@@ -54,5 +54,35 @@ function update(){document.getElementById('cartCount').textContent=cart.length;d
 function toggleCart(){document.getElementById('cartPanel').classList.toggle('open')}
 render();update();
 </script>
+<div class="cart-panel" id="adminPanel">
+  <div class="cart-head">
+    <h2>Admin</h2>
+    <button class="close" onclick="closeAdmin()">×</button>
+  </div>
+
+  <div id="loginArea">
+    <input id="adminUser" placeholder="Login" style="width:100%;padding:12px;margin-bottom:10px">
+    <input id="adminPass" type="password" placeholder="Senha" style="width:100%;padding:12px;margin-bottom:10px">
+    <button class="buy" onclick="loginAdmin()">Entrar</button>
+  </div>
+
+  <div id="adminArea" style="display:none">
+    <h3>Adicionar produto</h3>
+
+    <input id="pName" placeholder="Nome do produto" style="width:100%;padding:12px;margin:8px 0">
+
+    <input id="pOld" placeholder="Preço antigo" style="width:100%;padding:12px;margin:8px 0">
+
+    <input id="pPrice" placeholder="Preço atual" style="width:100%;padding:12px;margin:8px 0">
+
+    <input id="pCat" placeholder="Categoria" style="width:100%;padding:12px;margin:8px 0">
+
+    <input id="pBadge" placeholder="Badge" style="width:100%;padding:12px;margin:8px 0">
+
+    <button class="buy" onclick="addProductAdmin()">Salvar produto</button>
+
+    <button class="buy" style="background:#b90000;margin-top:10px" onclick="logoutAdmin()">Sair</button>
+  </div>
+</div>
 </body>
 </html>
