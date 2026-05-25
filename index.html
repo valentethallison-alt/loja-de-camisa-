@@ -37,7 +37,7 @@
 <footer>© 2026 VALENT STORE — Camisas de futebol premium.</footer>
 <script>
 const phone='34621332734';
-const products=[
+let products = JSON.parse(localStorage.getItem('valentProducts')) || [
 {name:'Brasil Amarelo 26/27 - Fan',old:'39.90',price:28,cat:'Seleções',badge:'Oferta',icon:'👕'},
 {name:'Portugal 26/27 - Player',old:'44.90',price:31,cat:'Seleções',badge:'Player',icon:'👕'},
 {name:'Real Madrid 25/26 - Fan',old:'39.90',price:28,cat:'La Liga',badge:'Oferta',icon:'👕'},
