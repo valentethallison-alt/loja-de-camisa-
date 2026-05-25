@@ -53,6 +53,61 @@ function add(i){cart.push(products[i]);update();document.getElementById('cartPan
 function update(){document.getElementById('cartCount').textContent=cart.length;document.getElementById('cartItems').innerHTML=cart.length?cart.map(p=>`<div class="cart-item"><strong>${p.name}</strong><br>€${p.price.toFixed(2)}</div>`).join(''):'<p>Carrinho vazio.</p>';const total=cart.reduce((s,p)=>s+p.price,0);document.getElementById('total').textContent='Total: €'+total.toFixed(2);const msg='Olá, quero fazer um pedido na VALENT STORE:%0A%0A'+cart.map(p=>'- '+p.name+' — €'+p.price.toFixed(2)).join('%0A')+'%0A%0ATotal: €'+total.toFixed(2);document.getElementById('checkout').href='https://wa.me/'+phone+'?text='+msg}
 function toggleCart(){document.getElementById('cartPanel').classList.toggle('open')}
 render();update();
+function openAdmin(){
+  document.getElementById('adminPanel').classList.add('open');
+
+  if(localStorage.getItem('adminLogged') === 'yes'){
+    document.getElementById('loginArea').style.display='none';
+    document.getElementById('adminArea').style.display='block';
+  }
+}
+
+function closeAdmin(){
+  document.getElementById('adminPanel').classList.remove('open');
+}
+
+function loginAdmin(){
+  const user=document.getElementById('adminUser').value;
+  const pass=document.getElementById('adminPass').value;
+
+  if(user==='admin' && pass==='admin'){
+    localStorage.setItem('adminLogged','yes');
+
+    document.getElementById('loginArea').style.display='none';
+
+    document.getElementById('adminArea').style.display='block';
+  }else{
+    alert('Login inválido');
+  }
+}
+
+function logoutAdmin(){
+  localStorage.removeItem('adminLogged');
+
+  document.getElementById('loginArea').style.display='block';
+
+  document.getElementById('adminArea').style.display='none';
+}
+
+function addProductAdmin(){
+
+  const product={
+    name:document.getElementById('pName').value,
+    old:document.getElementById('pOld').value,
+    price:parseFloat(document.getElementById('pPrice').value),
+    cat:document.getElementById('pCat').value,
+    badge:document.getElementById('pBadge').value,
+    icon:'👕'
+  };
+
+  products.push(product);
+
+  localStorage.setItem('valentProducts',JSON.stringify(products));
+
+  render();
+
+  alert('Produto adicionado!');
+}
 </script>
 <div class="cart-panel" id="adminPanel">
   <div class="cart-head">
